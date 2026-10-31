@@ -63,7 +63,8 @@ async function handleGenerate(body) {
         { role: "system", content: body.system || "" },
         { role: "user", content: body.prompt || "" },
       ],
-      temperature: 0.7,
+      temperature:
+        typeof body.temperature === "number" ? body.temperature : 0.7,
     }),
   });
 

@@ -36,7 +36,7 @@ async function cacheSet(key, value) {
 }
 
 // Text generation via the Render proxy (Groq behind it).
-async function gemma(system, prompt, cacheKey) {
+async function gemma(system, prompt, cacheKey, temperature) {
   if (cacheKey) {
     const cached = await cacheGet("poltergeist:cache:" + cacheKey);
     if (cached) return cached;
@@ -47,7 +47,11 @@ async function gemma(system, prompt, cacheKey) {
     resp = await fetch(PROXY_BASE + "/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ system, prompt }),
+      body: JSON.stringify({
+        system,
+        prompt,
+        temperature: typeof temperature === "number" ? temperature : 0.7,
+      }),
     });
   } catch (e) {
     throw new Error("PROXY_UNREACHABLE");
@@ -159,11 +163,7 @@ async function handlePossess(msg) {
 
 async function handleHeadlines(msg) {
   const prompt = (msg.headlines || []).join("\n");
-  const raw = await gemma(
-    SYSTEM_PROMPTS.headlines,
-    prompt,
-    "headlines:" + msg.url
-  );
+  const raw = await gemma(SYSTEM_PROMPTS.headlines, prompt, null, 0.9);
   const arr = parseJsonArray(raw);
   if (!arr) return { versions: null };
   return { versions: arr };
@@ -173,7 +173,8 @@ async function handleCompliment(msg) {
   const text = await gemma(
     SYSTEM_PROMPTS.compliment,
     "Page content excerpt:\n" + (msg.text || "").slice(0, 2000),
-    "compliment:" + msg.url
+    null,
+    1.0
   );
   return { text };
 }
@@ -182,7 +183,8 @@ async function handleFunFact(msg) {
   const text = await gemma(
     SYSTEM_PROMPTS.funFact,
     "Page content excerpt:\n" + (msg.text || "").slice(0, 2000),
-    "funfact:" + msg.url
+    null,
+    1.0
   );
   return { text };
 }
@@ -191,7 +193,8 @@ async function handleGhostWords(msg) {
   const raw = await gemma(
     SYSTEM_PROMPTS.ghostWords,
     "Page content excerpt:\n" + (msg.text || "").slice(0, 3000),
-    "ghostwords:" + msg.url
+    null,
+    0.7
   );
   const arr = parseJsonArray(raw);
   if (arr) return { words: arr };
