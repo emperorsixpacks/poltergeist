@@ -1,0 +1,15 @@
+<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" class="pg-ghost-svg">
+  <defs>
+    <radialGradient id="pgBody" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d9c6ff"/>
+    </radialGradient>
+    <filter id="pgGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <path filter="url(#pgGlow)" fill="url(#pgBody)" d="M10 60 C10 25 30 8 50 8 C70 8 90 25 90 60 L90 108 L78 96 L66 110 L54 96 L42 110 L30 96 L18 110 L10 100 Z"/>
+  <ellipse class="pg-eye" cx="36" cy="52" rx="7" ry="10" fill="#1a0f2e"/>
+  <ellipse class="pg-eye" cx="64" cy="52" rx="7" ry="10" fill="#1a0f2e"/>
+  <ellipse class="pg-mouth" cx="50" cy="76" rx="7" ry="9" fill="#1a0f2e"/>
+  <ellipse cx="26" cy="68" rx="6" ry="3.5" fill="#ff8ac8" opacity="0.45"/>
+  <ellipse cx="74" cy="68" rx="6" ry="3.5" fill="#ff8ac8" opacity="0.45"/>
+</svg>

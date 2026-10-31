@@ -1,0 +1,12 @@
+{
+  "name": "poltergeist-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Server-side proxy for the Poltergeist extension. Holds Groq + ElevenLabs keys.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

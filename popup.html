@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --pg-bg: #120a20;
+        --pg-border: rgba(168, 85, 247, 0.55);
+        --pg-purple: #a855f7;
+        --pg-orange: #ff8a1f;
+        --pg-ghost: #f3eaff;
+        --pg-text: #f5efff;
+        --pg-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        width: 280px;
+        margin: 0;
+        padding: 20px;
+        background: var(--pg-bg);
+        color: var(--pg-text);
+        font-family: var(--pg-font);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .ghost-container {
+        width: 72px;
+        height: 86px;
+        margin-bottom: 8px;
+        animation: pg-float 3.2s ease-in-out infinite;
+        filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.7));
+      }
+      .ghost-container svg {
+        width: 100%;
+        height: 100%;
+      }
+      .ghost-container .pg-eye {
+        animation: pg-blink 5s infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      @keyframes pg-float {
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50% { transform: translateY(-8px) rotate(2deg); }
+      }
+      @keyframes pg-blink {
+        0%, 94%, 100% { transform: scaleY(1); }
+        97% { transform: scaleY(.1); }
+      }
+      h1 {
+        margin: 0 0 2px;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--pg-ghost);
+      }
+      .tag {
+        font-size: 11px;
+        color: var(--pg-orange);
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 11px 16px;
+        margin: 6px 0;
+        border-radius: 999px;
+        border: 1px solid var(--pg-border);
+        background: rgba(28, 16, 48, 0.6);
+        color: var(--pg-text);
+        font-family: var(--pg-font);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        text-decoration: none;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #a855f7, #ff8a1f);
+        border: none;
+        color: #1a0f2e;
+        font-size: 15px;
+        padding: 12px 18px;
+        box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 0 20px rgba(255, 138, 31, 0.6);
+      }
+      #status {
+        font-size: 12px;
+        color: #cbbfff;
+        margin: 10px 0 6px;
+        min-height: 16px;
+        line-height: 1.4;
+      }
+      #status.warning,
+      #status.error {
+        color: var(--pg-orange);
+      }
+      .footer-row {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 6px;
+      }
+      .gear-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--pg-purple);
+        font-size: 12px;
+        text-decoration: none;
+        padding: 4px 6px;
+        border-radius: 6px;
+        transition: color 0.15s;
+      }
+      .gear-link:hover {
+        color: var(--pg-orange);
+      }
+      .gear-link svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ghost-container {
+          animation: none !important;
+        }
+        .ghost-container .pg-eye {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ghost-avatar" class="ghost-container"></div>
+    <h1>Poltergeist</h1>
+    <div class="tag">Ghost in the Machine</div>
+
+    <button id="possess" class="btn btn-primary">Possess this page</button>
+    <button id="exorcise" class="btn">Exorcise</button>
+
+    <div id="status"></div>
+
+    <div class="footer-row">
+      <a href="#" id="options" class="gear-link" title="Options">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+        </svg>
+        Options
+      </a>
+    </div>
+
+    <script src="assets.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

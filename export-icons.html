@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Poltergeist — Export Extension Icons</title>
+    <style>
+      :root {
+        --pg-bg: #120a20;
+        --pg-border: rgba(168, 85, 247, 0.55);
+        --pg-purple: #a855f7;
+        --pg-orange: #ff8a1f;
+        --pg-ghost: #f3eaff;
+        --pg-text: #f5efff;
+        --pg-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 40px;
+        background: var(--pg-bg);
+        color: var(--pg-text);
+        font-family: var(--pg-font);
+      }
+      h1 {
+        margin-top: 0;
+        color: var(--pg-ghost);
+      }
+      p {
+        color: #cbbfff;
+      }
+      .grid {
+        display: flex;
+        gap: 24px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .card {
+        background: rgba(28, 16, 48, 0.8);
+        border: 1px solid var(--pg-border);
+        border-radius: 14px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .canvas-wrap {
+        background-image: linear-gradient(45deg, #1f1435 25%, transparent 25%),
+          linear-gradient(-45deg, #1f1435 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #1f1435 75%),
+          linear-gradient(-45deg, transparent 75%, #1f1435 75%);
+        background-size: 16px 16px;
+        background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        padding: 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+        min-height: 140px;
+      }
+      button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--pg-border);
+        background: var(--pg-bg);
+        color: var(--pg-text);
+        font: 600 13px var(--pg-font);
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+      }
+      button.primary {
+        background: linear-gradient(135deg, #a855f7, #ff8a1f);
+        border: none;
+        color: #1a0f2e;
+        margin-top: 20px;
+        font-size: 15px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Poltergeist — Icon Generator</h1>
+    <p>Render and export 16x16, 48x48, and 128x128 PNG icons from GHOST_SVG with transparent background.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>16 &times; 16 px</h3>
+        <div class="canvas-wrap">
+          <canvas id="c-16" width="16" height="16"></canvas>
+        </div>
+        <button onclick="downloadIcon(16)">Download icon-16.png</button>
+      </div>
+
+      <div class="card">
+        <h3>48 &times; 48 px</h3>
+        <div class="canvas-wrap">
+          <canvas id="c-48" width="48" height="48"></canvas>
+        </div>
+        <button onclick="downloadIcon(48)">Download icon-48.png</button>
+      </div>
+
+      <div class="card">
+        <h3>128 &times; 128 px</h3>
+        <div class="canvas-wrap">
+          <canvas id="c-128" width="128" height="128"></canvas>
+        </div>
+        <button onclick="downloadIcon(128)">Download icon-128.png</button>
+      </div>
+    </div>
+
+    <button class="primary" onclick="downloadAll()">Download All Icons</button>
+
+    <script src="assets.js"></script>
+    <script>
+      const sizes = [16, 48, 128];
+
+      function renderIcons() {
+        sizes.forEach((size) => {
+          const canvas = document.getElementById(`c-${size}`);
+          const ctx = canvas.getContext("2d");
+          const img = new Image();
+          const svgBlob = new Blob([GHOST_SVG], { type: "image/svg+xml;charset=utf-8" });
+          const url = URL.createObjectURL(svgBlob);
+          img.onload = () => {
+            ctx.clearRect(0, 0, size, size);
+            // Fit 100x120 aspect ratio centered
+            const aspect = 100 / 120;
+            let drawW = size;
+            let drawH = size;
+            let dx = 0;
+            let dy = 0;
+            if (size * (120 / 100) > size) {
+              drawH = size;
+              drawW = size * aspect;
+              dx = (size - drawW) / 2;
+            } else {
+              drawW = size;
+              drawH = size / aspect;
+              dy = (size - drawH) / 2;
+            }
+            ctx.drawImage(img, dx, dy, drawW, drawH);
+            URL.revokeObjectURL(url);
+          };
+          img.src = url;
+        });
+      }
+
+      function downloadIcon(size) {
+        const canvas = document.getElementById(`c-${size}`);
+        const link = document.createElement("a");
+        link.download = `icon-${size}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
+
+      function downloadAll() {
+        sizes.forEach((s) => downloadIcon(s));
+      }
+
+      window.addEventListener("DOMContentLoaded", renderIcons);
+    </script>
+  </body>
+</html>
