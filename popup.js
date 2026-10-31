@@ -13,6 +13,16 @@ function setStatus(msg, isWarning = false) {
   statusEl.className = isWarning ? "warning" : "";
 }
 
+function isRestrictedPage(err) {
+  const m = (err && err.message) || String(err || "");
+  return (
+    /chrome:\/\//i.test(m) ||
+    /brave:\/\//i.test(m) ||
+    /edge:\/\//i.test(m) ||
+    /cannot access/i.test(m)
+  );
+}
+
 async function activeTab() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   return tab;
@@ -55,7 +65,14 @@ document.getElementById("possess").addEventListener("click", async () => {
     await chrome.tabs.sendMessage(tab.id, { type: "pg-possess" });
     window.close();
   } catch (e) {
-    setStatus("Haunt failed: " + (e && e.message ? e.message : e), true);
+    if (isRestrictedPage(e)) {
+      setStatus(
+        "Can't haunt this page. Open a real website (http/https) — browser pages like chrome:// are off-limits.",
+        true
+      );
+    } else {
+      setStatus("Haunt failed: " + (e && e.message ? e.message : e), true);
+    }
   }
 });
 
