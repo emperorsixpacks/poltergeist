@@ -17,14 +17,14 @@ No keys, no backend setup — the AI and voice run on the hosted Render proxy.
 ## Features
 
 1. **Possess** — extracts the page title, headings and ~1500 chars of visible
-   body text (form, password and payment fields are skipped), asks Gemma for a
+   body text (form, password and payment fields are skipped), asks the model for a
    short spooky whisper about the page, shows it in a ghost speech bubble with a
    typewriter effect, and speaks it aloud while the ghost mouth animates.
 2. **Trick or Treat** — a floating ghost widget offers a random **Trick**
    (spooky headline rewrites, page flicker, a cursor follower ghost, or a flashlight
    dim) or **Treat** (candy points, a ghostly compliment, or a spooky fun
    fact). Every outcome is voiced. Candy is tracked in a purple/orange HUD.
-3. **Ghost Hunt** — Gemma returns 5 words from the page; each is wrapped with a
+3. **Ghost Hunt** — the model returns 5 words from the page; each is wrapped with a
    hidden translucent mini ghost (`opacity: .12`). Hover reveals them, or press the
    **Hint** button to pulse one ghost for 1.5s. Click to catch them against a 30s timer,
    with a taunt in the ghost's voice on each catch.

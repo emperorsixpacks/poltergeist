@@ -48,5 +48,5 @@ It lands the moment the ghost says something only someone who actually read _tha
 ## Prize Categories
 
 - Best Use of Render
-- Best Use of Gemma
+- Best Use of Groq
 - Best Use of ElevenLabs
