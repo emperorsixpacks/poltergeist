@@ -5,6 +5,15 @@ for the Hacktoberfest **"Ghost in the Machine"** challenge. AI text runs on
 open-weight **gpt-oss via Groq**, the voice is **ElevenLabs**, and both are
 proxied through a tiny **Render** service so users never provide their own keys.
 
+## Try it (30 seconds, no installs)
+
+1. Grab `poltergeist.zip` from the [latest release](https://github.com/emperorsixpacks/poltergeist/releases) and unzip it.
+2. Open `chrome://extensions` (or `brave://extensions`) → toggle **Developer mode**.
+3. Click **Load unpacked** → select the unzipped `poltergeist` folder.
+4. Open any website → click the Poltergeist icon → **Possess this page**.
+
+No keys, no backend setup — the AI and voice run on the hosted Render proxy.
+
 ## Features
 
 1. **Possess** — extracts the page title, headings and ~1500 chars of visible
