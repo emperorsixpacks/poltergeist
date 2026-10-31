@@ -1,8 +1,8 @@
-*This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine](https://dev.to/challenges/hacktoberfest-week4-2026-10-26)*
+_This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine](https://dev.to/challenges/hacktoberfest-week4-2026-10-26)_
 
 ## What I Built
 
-Poltergeist is a Chrome Manifest V3 extension that literally haunts whatever web page you're on. Click **Possess this page** and a ghost appears, reads the page's title, headings and a ~1,500-character excerpt of visible text, then whispers a short, eerie, funny observation about *that exact page* in a floating speech bubble — voiced aloud.
+Poltergeist is a Chrome Manifest V3 extension that literally haunts whatever web page you're on. Click **Possess this page** and a ghost appears, reads the page's title, headings and a ~1,500-character excerpt of visible text, then whispers a short, eerie, funny observation about _that exact page_ in a floating speech bubble — voiced aloud.
 
 It doesn't stop at one trick:
 
@@ -15,7 +15,7 @@ Everything is vanilla JS with no build step. The ghost is pure CSS / inline SVG 
 
 ## Demo
 
-<!-- Add a deployed link or video demo here -->
+Full 1080p demo walkthrough with ElevenLabs voiceover: [`poltergeist-demo`](https://youtu.be/hetrSxxsRDk) (features the ghost possessing the page, typewriter whispers, headline mutations, screen flicker, flashlight dimming, cursor follower, and ghost hunt mini-game).
 
 ## Code
 
@@ -23,7 +23,7 @@ https://github.com/emperorsixpacks/poltergeist
 
 ## How I Built It
 
-Open-weight AI is the brain: **gpt-oss-120b** (OpenAI's MIT-licensed open model) served through **Groq**. A system prompt — *"You are a mischievous ghost haunting this web page…"* — turns the extracted page text into the ghost's lines.
+Open-weight AI is the brain: **gpt-oss-120b** (OpenAI's MIT-licensed open model) served through **Groq**. A system prompt — _"You are a mischievous ghost haunting this web page…"_ — turns the extracted page text into the ghost's lines.
 
 Architecture:
 
@@ -43,8 +43,10 @@ Because the "personality" of this thing — the ghost — is just a model plus a
 
 ## The Spirit of It
 
-It lands the moment the ghost says something only someone who actually read *that page* would know — it isn't a canned joke, it's a whisper about the thing on your screen right now. That's "ghost in the machine" made literal: an open model reading the page alongside you, just for a second.
+It lands the moment the ghost says something only someone who actually read _that page_ would know — it isn't a canned joke, it's a whisper about the thing on your screen right now. That's "ghost in the machine" made literal: an open model reading the page alongside you, just for a second.
 
 ## Prize Categories
 
 - Best Use of Render
+- Best Use of Gemma
+- Best Use of ElevenLabs
