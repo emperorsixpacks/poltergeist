@@ -71,8 +71,3 @@ document.getElementById("exorcise").addEventListener("click", async () => {
     setStatus("Nothing to exorcise.", true);
   }
 });
-
-document.getElementById("options").addEventListener("click", (e) => {
-  e.preventDefault();
-  chrome.runtime.openOptionsPage();
-});

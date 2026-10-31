@@ -50,8 +50,7 @@ background.js      Service worker. Calls the Render proxy for text + voice; cach
 content.js         Injected into the page. Builds Shadow DOM, coordinates audio, typewriter,
                    and runs tricks, hunts, and exorcism.
 content.css        Design tokens, ghost animations, bubble, HUD, hunt, and reduced-motion rules.
-popup.html/js      280px popup with animated ghost avatar, "Possess this page", and options link.
-options.html/js    Optional; kept for manual overrides. Not needed for normal use.
+popup.html/js      280px popup with animated ghost avatar and "Possess this page".
 server.js          Render service: /api/generate (Groq) + /api/tts (ElevenLabs). Holds keys in env.
 package.json       Node config for the Render service (zero dependencies).
 build-icons.js     Node script to generate 16, 48, 128 px PNG icons via sharp or ImageMagick.
