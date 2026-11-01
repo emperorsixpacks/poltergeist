@@ -10,6 +10,9 @@ Most AI browser extensions behave like polite corporate sidebars: you highlight 
 
 When you click **Possess this page**, a purple-glowing ghost materializes directly over your screen. It reads the page's title, headings, and visible text, then whispers an eerie, hilarious, context-aware observation about *that exact page* in a floating speech bubble — spoken aloud with an authentic spectral voice while its mouth animates.
 
+![Poltergeist mascot — a purple-glowing ghost](https://raw.githubusercontent.com/emperorsixpacks/poltergeist/main/screenshots/01-intro.png)
+*The Poltergeist mascot: a purple-glowing ghost that materializes over any page you haunt.*
+
 {% youtube hetrSxxsRDk %}
 
 ### Features & Capabilities
