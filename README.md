@@ -32,6 +32,18 @@ No keys, no backend setup — the AI and voice run on the hosted Render proxy.
    classes (`pg-flicker`, `pg-dim`), removes hunt wrappers, restores original headlines,
    and stops audio.
 
+## Screenshots & Demo
+
+| Possess & Whisper | Flashlight & Headlights |
+|:---:|:---:|
+| ![Possess](./screenshots/03-possess-whisper.png) | ![Flashlight](./screenshots/05-flashlight-mode.png) |
+
+| Ghost Hunt Mini-Game | Extension Popup |
+|:---:|:---:|
+| ![Ghost Hunt](./screenshots/06-ghost-hunt.png) | ![Popup](./screenshots/02-popup.png) |
+
+Watch the full walkthrough video: [`poltergeist-demo.mp4`](./poltergeist-demo.mp4) or on [YouTube](https://youtu.be/hetrSxxsRDk).
+
 ## Design System & Architecture
 
 - **Shadow DOM Isolation**: All UI elements (`.pg-widget`, `.pg-bubble`, `.pg-hud`,
