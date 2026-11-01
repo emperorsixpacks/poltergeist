@@ -1,6 +1,6 @@
 *This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 4: Ghost in the Machine](https://dev.to/challenges/hacktoberfest-week4-2026-10-26)*
 
-> **Try it now** — [watch the demo](https://youtu.be/hetrSxxsRDk), then [grab the extension](https://github.com/emperorsixpacks/poltergeist/releases). No installs, no API keys.
+{% cta https://github.com/emperorsixpacks/poltergeist/releases %} Grab the extension and haunt a page {% endcta %}
 
 ## What I Built
 
